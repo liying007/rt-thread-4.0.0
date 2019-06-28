@@ -1,0 +1,22 @@
+import rtconfig
+from building import *
+
+cwd     = GetCurrentDir()
+CPPPATH = [cwd, str(Dir('#'))]
+src     = Split("""
+app_uart.c
+main.c
+tftlcd/tftlcd.c
+public/stm32f4xx_fsmc.c
+key/key.c
+""")
+
+path =  [cwd]
+path += [cwd + '/tftlcd']
+path += [cwd + '/public']
+path += [cwd + '/key']
+
+
+group = DefineGroup('Applications', src, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')
