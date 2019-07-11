@@ -1,0 +1,15 @@
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\example\wallpaper2.c
+.\build\keil\obj\wallpaper2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lv_conf.h
+.\build\keil\obj\wallpaper2.o: .\rtconfig.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/lv_draw.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_core/lv_style.h
+.\build\keil\obj\wallpaper2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_core/../lv_misc/lv_color.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_core/../lv_misc/lv_area.h
+.\build\keil\obj\wallpaper2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_core/../lv_misc/lv_font.h
+.\build\keil\obj\wallpaper2.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_core/../lv_misc/lv_fonts/lv_symbol_def.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_core/../lv_misc/lv_anim.h
+.\build\keil\obj\wallpaper2.o: packages\LittlevGL2RTT-v0.0.1\lvgl/lv_draw/../lv_misc/lv_txt.h

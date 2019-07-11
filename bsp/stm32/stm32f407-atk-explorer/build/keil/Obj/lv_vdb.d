@@ -1,0 +1,17 @@
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\lv_vdb.c
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\lv_vdb.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../../lv_conf.h
+.\build\keil\obj\lv_vdb.o: .\rtconfig.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_misc/lv_color.h
+.\build\keil\obj\lv_vdb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_misc/lv_area.h
+.\build\keil\obj\lv_vdb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\build\keil\obj\lv_vdb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_hal/lv_hal_disp.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_hal/lv_hal.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_hal/lv_hal_disp.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_hal/lv_hal_indev.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_hal/lv_hal.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_hal/lv_hal_tick.h
+.\build\keil\obj\lv_vdb.o: packages\LittlevGL2RTT-latest\lvgl\lv_core\../lv_misc/lv_log.h
+.\build\keil\obj\lv_vdb.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

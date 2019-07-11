@@ -1,0 +1,9 @@
+.\build\keil\obj\lv_ll.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_ll.c
+.\build\keil\obj\lv_ll.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\lv_ll.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\build\keil\obj\lv_ll.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_ll.h
+.\build\keil\obj\lv_ll.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_mem.h
+.\build\keil\obj\lv_ll.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\../../lv_conf.h
+.\build\keil\obj\lv_ll.o: .\rtconfig.h
+.\build\keil\obj\lv_ll.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\build\keil\obj\lv_ll.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_log.h

@@ -1,0 +1,10 @@
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: packages\LittlevGL2RTT-latest\lvgl\lv_fonts\lv_font_dejavu_10_cyrillic.c
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: packages\LittlevGL2RTT-latest\lvgl\lv_fonts\../lv_misc/lv_font.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: packages\LittlevGL2RTT-latest\lvgl\lv_fonts\../lv_misc/../../lv_conf.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: .\rtconfig.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: packages\LittlevGL2RTT-latest\lvgl\lv_fonts\../lv_misc/lv_symbol_def.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: packages\LittlevGL2RTT-latest\lvgl\lv_fonts\../lv_misc/../lv_fonts/lv_font_builtin.h
+.\build\keil\obj\lv_font_dejavu_10_cyrillic.o: packages\LittlevGL2RTT-latest\lvgl\lv_fonts\../lv_misc/../lv_fonts/../lv_misc/lv_font.h
