@@ -1,8 +1,8 @@
 #include "tftlcd.h"
-#include "../public/SysTick.h"
-//#include "../public/usart.h"
-#include "../public/gpio.h"
-#include "../public/stm32f4xx_fsmc.h"
+#include "SysTick.h"
+//#include "usart.h"
+#include "gpio.h"
+#include "stm32f4xx_fsmc.h"
 #include "font.h"
 
 

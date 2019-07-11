@@ -2,6 +2,7 @@
 #include "spi_flash_w25qxx.h"
 #include "drv_spi.h"
 #include "stm32f407xx.h"
+#include "gpio.h"
 
 
 
@@ -13,12 +14,19 @@
 
 void key_init()
 {
-	    // left right down  pull up
-    rt_pin_mode(KEY_LEFT_Pin, PIN_MODE_INPUT_PULLUP);
-		rt_pin_mode(KEY_RIGHT_Pin, PIN_MODE_INPUT_PULLUP);
-    rt_pin_mode(KEY_DOWN_Pin, PIN_MODE_INPUT_PULLUP);
-    // up  pull down
-    rt_pin_mode(KEY_UP_Pin, PIN_MODE_INPUT_PULLDOWN);
+		GPIO_InitTypeDef_ GPIO_InitStructure; //定义结构体变量	
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE|RCC_AHB1Periph_GPIOA,ENABLE); //使能端口时钟
+		
+		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN; //输入模式
+		GPIO_InitStructure.GPIO_Pin=KEY_LEFT_Pin|KEY_DOWN_Pin|KEY_RIGHT_Pin;//管脚设置
+		GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;//上拉
+		GPIO_Init(KEY_Port,&GPIO_InitStructure); //初始化结构体
+		
+		GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN; //输入模式
+		GPIO_InitStructure.GPIO_Pin=KEY_UP_Pin;//管脚设置
+		GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_DOWN;//下拉
+		GPIO_Init(KEY_UP_Port,&GPIO_InitStructure); //初始化结构体
+	
 }
 
 /*******************************************************************************
@@ -32,32 +40,38 @@ void key_init()
 					 KEY_LEFT：K_LEFT键按下
 					 KEY_RIGHT：K_RIGHT键按下
 *******************************************************************************/
-u8 key_scan()
+u8 key_scan(u8 mode)
 {
-		// 10ms
-		rt_thread_delay(rt_tick_from_millisecond(10));
-	
-		if (rt_pin_read(KEY_LEFT_Pin) == PIN_LOW)
+		static u8 key=1;
+		if(key==1 && (READ_PIN_KEY_UP==PIN_HIGH || READ_PIN_KEY_DOWN==PIN_LOW || READ_PIN_KEY_LEFT==PIN_LOW || READ_PIN_KEY_RIGHT==PIN_LOW)) //任意一个按键按下
 		{
-			//rt_kprintf("KEY_LEFT pressed!\n");
-			return KEY_LEFT;
+			rt_thread_delay(rt_tick_from_millisecond(10));  //消抖
+			key=0;
+			if(READ_PIN_KEY_UP == PIN_HIGH)
+			{
+				return KEY_UP; 
+			}
+			else if(READ_PIN_KEY_DOWN == PIN_LOW)
+			{
+				return KEY_DOWN; 
+			}
+			else if(READ_PIN_KEY_LEFT == PIN_LOW)
+			{
+				return KEY_LEFT; 
+			}
+			else if(READ_PIN_KEY_RIGHT == PIN_LOW)
+			{
+				return KEY_RIGHT;
+			}
 		}
-
-		if (rt_pin_read(KEY_RIGHT_Pin) == PIN_LOW)
+		else if(READ_PIN_KEY_UP==PIN_LOW && READ_PIN_KEY_DOWN==PIN_HIGH && READ_PIN_KEY_LEFT==PIN_HIGH && READ_PIN_KEY_RIGHT==PIN_HIGH)    //无按键按下
 		{
-			//rt_kprintf("KEY_RIGHT pressed!\n");
-			return KEY_RIGHT;
+			key=1;
 		}
-
-		if (rt_pin_read(KEY_DOWN_Pin) == PIN_LOW)
+		if(mode == 1) //连续按键按下
 		{
-			//rt_kprintf("KEY_DOWN pressed!\n");
-			return KEY_DOWN;
+			key=1;
 		}
-
-		if (rt_pin_read(KEY_UP_Pin) == PIN_HIGH)
-		{
-			//rt_kprintf("KEY_UP pressed!\n");
-			return KEY_UP;
-		}
+		
+		return 0;
 }
