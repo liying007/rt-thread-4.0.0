@@ -5,3 +5,5 @@ Release/
 *.o
 *.pyc
 *.crf
+build/
+
