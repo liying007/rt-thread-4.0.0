@@ -90,7 +90,8 @@ static int rt_hw_spi_flash_with_sfud_init(void)
 INIT_COMPONENT_EXPORT(rt_hw_spi_flash_with_sfud_init);
 */
 
-//mount flash  W25Q128		
+//mount flash  W25Q128
+/*
 static int mnt_init(void)
 {
 	rt_thread_delay(RT_TICK_PER_SECOND * 5);
@@ -101,9 +102,11 @@ static int mnt_init(void)
 	}
 	else
 	{
-			 rt_kprintf("spi flash mount to / failed \n");
+			rt_kprintf("spi flash mount to / failed \n");
 	}
+	return 0;
 }
+*/
 
 void test_hz1()
 {
@@ -129,11 +132,11 @@ void test_hz(void)
 FRESULT test_readSdFile()
 {
 		int ret;
-		struct dfs_fd fd;
+		// struct dfs_fd fd;
 		FIL file;
     FRESULT res;
 		uint32_t br;
-		uint8_t letterBuff[32] = {0};
+		// uint8_t letterBuff[32] = {0};
 	
 		//ret = dfs_file_open(&fd, "123.txt", O_RDONLY);
 		
@@ -143,12 +146,12 @@ FRESULT test_readSdFile()
 		
 		if(res != FR_OK) 
 		{ 
-			return NULL;
+			ret = NULL;
+		} else {
+			ret = f_write(&file, "123456", 6, &br);
+			//res = f_read(&file, letterBuff, 2, &br);
 		}
-		
-		res = f_write(&file, "123456", 6, &br);
-		//res = f_read(&file, letterBuff, 2, &br);
-		return res;
+		return (FRESULT) ret;
 }
 
 void test_bar()
@@ -490,7 +493,7 @@ void convertStrToUnChar(char* str, unsigned char* UnChar)
 
 int main(void)
 {
-		struct rt_device *mtd_dev = RT_NULL;
+		// struct rt_device *mtd_dev = RT_NULL;
 	
 		rt_kprintf("\n*****************main*****************\n");
     //led 

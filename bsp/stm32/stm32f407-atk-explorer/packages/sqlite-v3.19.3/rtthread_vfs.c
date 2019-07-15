@@ -268,7 +268,7 @@ static int _rtthread_vfs_open(sqlite3_vfs *pvfs, const char *file_path, sqlite3_
 {
     RTTHREAD_SQLITE_FILE_T *p;
     int fd;
-    int eType = flags & 0xFFFFFF00;  /* Type of file to open */
+    // int eType = flags & 0xFFFFFF00;  /* Type of file to open */
     int rc = SQLITE_OK;            /* Function Return Code */
     int openFlags = 0;
     mode_t openMode = 0;

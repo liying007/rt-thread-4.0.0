@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: ¦ÌVision V5.14.0.0
 Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: y l, xy, LIC=GE7DY-IU8T3-F15PT-R0DUL-GB9K7-WXERE
+License Information: up duan, baremind, LIC=BL2Z9-49600-48NFA-1X1V7-0NQ07-BAARV
  
 Tool Versions:
 Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
@@ -17,29 +17,49 @@ Library Manager: ArmAr.exe V5.05 update 1 (build 106)
 Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
 CPU DLL:         SARMCM3.DLL V5.14.0.0
 Dialog DLL:      DCM.DLL V1.13.1.0
-Target DLL:      Segger\JL2CM3.dll V2.99.13.0
+Target DLL:      UL2CM3.DLL V1.155.0.0
 Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
-E:\ly_work\rt-thread-4.0.0\bsp\stm32\stm32f407-atk-explorer\project.uvprojx
-Project File Date:  07/05/2019
+C:\Users\Apple\source\repos\rt-thread-4.0.0\bsp\stm32\stm32f407-atk-explorer\project.uvprojx
+Project File Date:  07/15/2019
 
 <h2>Output:</h2>
 Build target 'rt-thread'
-compiling key.c...
-applications\key\key.h(38): warning:  #1295-D: Deprecated declaration key_init - give arg types
-  void key_init();
-applications\key\key.h(39): warning:  #1295-D: Deprecated declaration KEY_Scan - give arg types
-  u8 KEY_Scan();
-applications\key\key.c: 2 warnings, 0 errors
+compiling sqlite3.c...
+packages\sqlite-v3.19.3\sqlite3.c(28181): warning:  #222-D: floating-point operation result is out of range
+              result = 1e308*1e308*s;  /* Infinity */ // FIXME: out of range
+packages\sqlite-v3.19.3\rtthread_vfs.c(58): warning:  #231-D: declaration is not visible outside of function
+  __weak int _gettimeofday(struct timeval *tp, void *ignore)
+packages\sqlite-v3.19.3\sqlite3.c(86856): warning:  #191-D: type qualifier is meaningless on cast type
+    const u8 * const p1 = (const u8 * const)pKey1;
+packages\sqlite-v3.19.3\sqlite3.c(86857): warning:  #191-D: type qualifier is meaningless on cast type
+    const u8 * const p2 = (const u8 * const)pKey2;
+packages\sqlite-v3.19.3\sqlite3.c(86897): warning:  #191-D: type qualifier is meaningless on cast type
+    const u8 * const p1 = (const u8 * const)pKey1;
+packages\sqlite-v3.19.3\sqlite3.c(86898): warning:  #191-D: type qualifier is meaningless on cast type
+    const u8 * const p2 = (const u8 * const)pKey2;
+packages\sqlite-v3.19.3\sqlite3.c(88567): warning:  #1293-D: assignment in condition
+              if( (pIncr = pMain->aReadr[iTask].pIncr) ){
+packages\sqlite-v3.19.3\sqlite3.c(142114): warning:  #177-D: variable "nName" was declared but never referenced
+    int nName;
+packages\sqlite-v3.19.3\sqlite3.c(20249): warning:  #177-D: function "sqlite3OsShmMap" was declared but never referenced
+  SQLITE_PRIVATE int sqlite3OsShmMap(
+packages\sqlite-v3.19.3\sqlite3.c(20240): warning:  #177-D: function "sqlite3OsShmLock" was declared but never referenced
+  SQLITE_PRIVATE int sqlite3OsShmLock(sqlite3_file *id, int offset, int n, int flags){
+packages\sqlite-v3.19.3\sqlite3.c(20243): warning:  #177-D: function "sqlite3OsShmBarrier" was declared but never referenced
+  SQLITE_PRIVATE void sqlite3OsShmBarrier(sqlite3_file *id){
+packages\sqlite-v3.19.3\sqlite3.c(20246): warning:  #177-D: function "sqlite3OsShmUnmap" was declared but never referenced
+  SQLITE_PRIVATE int sqlite3OsShmUnmap(sqlite3_file *id, int deleteFlag){
+packages\sqlite-v3.19.3\sqlite3.c: 12 warnings, 0 errors
 linking...
-Program Size: Code=179420 RO-data=21972 RW-data=2608 ZI-data=14720  
+Program Size: Code=179416 RO-data=21972 RW-data=2608 ZI-data=14720  
 After Build - User command #1: fromelf --bin .\build\keil\Obj\rt-thread.axf --output rtthread.bin
-".\build\keil\Obj\rt-thread.axf" - 0 Error(s), 2 Warning(s).
+".\build\keil\Obj\rt-thread.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
-  E:\ly_work\rt-thread-4.0.0\bsp\stm32\stm32f407-atk-explorer\RTE
-  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0
+  C:\Users\Apple\source\repos\rt-thread-4.0.0\bsp\stm32\stm32f407-atk-explorer\RTE
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Include
 
 <h2>Collection of Component Files used:</h2>
 </pre>

@@ -190,7 +190,7 @@ void LCD_Display_Dir(u8 dir)
 
 void TFTLCD_Init(void)
 {
-	u16 i;
+	//u16 i;
 	TFTLCD_GPIO_Init();
 	TFTLCD_FSMC_Init();
 	
@@ -360,7 +360,7 @@ void LCD_DrawFRONT_COLOR(u16 x,u16 y,u16 color)
 //返回值:此点的颜色
 u16 LCD_ReadPoint(u16 x,u16 y)
 {
- 	u16 r=0,g=0,b=0;
+ 	u16 r=0; //,g=0,b=0;
 	if(x>=tftlcd_data.width||y>=tftlcd_data.height)return 0;	//超过了范围,直接返回		     
 	LCD_Set_Window(x, y, x, y);
 
