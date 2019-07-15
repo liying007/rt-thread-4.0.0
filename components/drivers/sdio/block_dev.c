@@ -114,7 +114,7 @@ static rt_err_t rt_mmcsd_req_blk(struct rt_mmcsd_card *card,
     struct rt_mmcsd_host *host = card->host;
     rt_uint32_t r_cmd, w_cmd;
 
-    mmcsd_host_lock(host);
+              mmcsd_host_lock(host);
     rt_memset(&req, 0, sizeof(struct rt_mmcsd_req));
     rt_memset(&cmd, 0, sizeof(struct rt_mmcsd_cmd));
     rt_memset(&stop, 0, sizeof(struct rt_mmcsd_cmd));
@@ -122,7 +122,7 @@ static rt_err_t rt_mmcsd_req_blk(struct rt_mmcsd_card *card,
     req.cmd = &cmd;
     req.data = &data;
     
-    cmd.arg = sector;
+    cmd.arg = sector;  
     if (!(card->flags & CARD_FLAG_SDHC)) 
     {
         cmd.arg <<= 9;

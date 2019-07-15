@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, STM32F407xx, LFS_CONFIG=lfs_config.h, RT_USING_ARM_LIBC</Define>
               <Undefine></Undefine>
-              <IncludePath>.;..\..\..\include;applications;.;board;board\CubeMX_Config\Inc;board\ports;..\libraries\HAL_Drivers;..\libraries\HAL_Drivers\config;..\libraries\HAL_Drivers\drv_flash;packages\fal-latest\inc;packages\littlefs-latest;packages\LittlevGL2RTT-latest;packages\LittlevGL2RTT-latest\lvgl;packages\LittlevGL2RTT-latest\lvgl\lv_core;packages\LittlevGL2RTT-latest\lvgl\lv_draw;packages\LittlevGL2RTT-latest\lvgl\lv_hal;packages\LittlevGL2RTT-latest\lvgl\lv_misc;packages\LittlevGL2RTT-latest\lvgl\lv_fonts;packages\LittlevGL2RTT-latest\lvgl\lv_objx;packages\LittlevGL2RTT-latest\lvgl\lv_themes;packages\LittlevGL2RTT-latest\lvgl\lv_porting;packages\mpu6xxx-latest\inc;packages\sqlite-v3.19.3;..\..\..\libcpu\arm\common;..\..\..\libcpu\arm\cortex-m4;..\..\..\components\dfs\include;..\..\..\components\dfs\filesystems\devfs;..\..\..\components\dfs\filesystems\elmfat;..\..\..\components\drivers\audio;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\spi;..\..\..\components\drivers\include;..\..\..\components\drivers\spi\sfud\inc;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\usb\usbhost;..\..\..\components\drivers\usb\usbhost\class;..\..\..\components\drivers\usb\usbhost\core;..\..\..\components\drivers\usb\usbhost\include;..\..\..\components\drivers\include;..\..\..\components\finsh;..\..\..\components\libc\compilers\armlibc;..\..\..\components\libc\compilers\common;..\..\..\components\utilities\logtrace;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;..\libraries\STM32F4xx_HAL\CMSIS\Include;.\applications\tftlcd;.\applications\public;.\applications\key</IncludePath>
+              <IncludePath>.;..\..\..\include;applications;.;board;board\CubeMX_Config\Inc;board\ports;..\libraries\HAL_Drivers;..\libraries\HAL_Drivers\config;..\libraries\HAL_Drivers\drv_flash;packages\fal-latest\inc;packages\filesystem_samples-v0.2.0;packages\littlefs-latest;packages\LittlevGL2RTT-latest;packages\LittlevGL2RTT-latest\lvgl;packages\LittlevGL2RTT-latest\lvgl\lv_core;packages\LittlevGL2RTT-latest\lvgl\lv_draw;packages\LittlevGL2RTT-latest\lvgl\lv_hal;packages\LittlevGL2RTT-latest\lvgl\lv_misc;packages\LittlevGL2RTT-latest\lvgl\lv_fonts;packages\LittlevGL2RTT-latest\lvgl\lv_objx;packages\LittlevGL2RTT-latest\lvgl\lv_themes;packages\LittlevGL2RTT-latest\lvgl\lv_porting;packages\mpu6xxx-latest\inc;packages\sqlite-v3.19.3;..\..\..\libcpu\arm\common;..\..\..\libcpu\arm\cortex-m4;..\..\..\components\dfs\include;..\..\..\components\dfs\filesystems\devfs;..\..\..\components\dfs\filesystems\elmfat;..\..\..\components\drivers\audio;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\spi;..\..\..\components\drivers\include;..\..\..\components\drivers\spi\sfud\inc;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\usb\usbdevice;..\..\..\components\drivers\usb\usbhost;..\..\..\components\drivers\usb\usbhost\class;..\..\..\components\drivers\usb\usbhost\core;..\..\..\components\drivers\usb\usbhost\include;..\..\..\components\drivers\include;..\..\..\components\finsh;..\..\..\components\libc\compilers\armlibc;..\..\..\components\libc\compilers\common;..\..\..\components\utilities\logtrace;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;..\libraries\STM32F4xx_HAL\CMSIS\Include;.\applications\key;.\applications\public;.\applications\tftlcd</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -509,14 +509,14 @@
               <FilePath>applications\public\stm32f4xx_fsmc.c</FilePath>
             </File>
             <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\key\key.c</FilePath>
+            </File>
+            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\applications\public\gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\key\key.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -567,6 +567,11 @@
               <FileName>drv_spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\libraries\HAL_Drivers\drv_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_usb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\libraries\HAL_Drivers\drv_usb.c</FilePath>
             </File>
             <File>
               <FileName>drv_soft_i2c.c</FileName>
@@ -687,6 +692,16 @@
               <FileName>fal_rtt.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\fal-latest\src\fal_rtt.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>filesystem-samples</GroupName>
+          <Files>
+            <File>
+              <FileName>readwrite_sample.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\filesystem_samples-v0.2.0\readwrite_sample.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1556,10 +1571,45 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>rt_usbh</GroupName>
+          <GroupName>rt_usbd</GroupName>
           <Files>
             <File>
               <FileName>core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\usb\usbdevice\core\core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbdevice.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\usb\usbdevice\core\usbdevice.c</FilePath>
+            </File>
+            <File>
+              <FileName>cdc_vcom.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\usb\usbdevice\class\cdc_vcom.c</FilePath>
+            </File>
+            <File>
+              <FileName>hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\usb\usbdevice\class\hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>mstorage.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\usb\usbdevice\class\mstorage.c</FilePath>
+            </File>
+            <File>
+              <FileName>winusb.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\drivers\usb\usbdevice\class\winusb.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>rt_usbh</GroupName>
+          <Files>
+            <File>
+              <FileName>core_core.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\components\drivers\usb\usbhost\core\core.c</FilePath>
             </File>

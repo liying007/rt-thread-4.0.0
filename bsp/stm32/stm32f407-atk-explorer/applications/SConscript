@@ -8,6 +8,7 @@ app_uart.c
 main.c
 tftlcd/tftlcd.c
 public/stm32f4xx_fsmc.c
+public/gpio.c
 key/key.c
 """)
 

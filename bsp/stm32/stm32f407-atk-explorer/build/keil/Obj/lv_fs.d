@@ -1,0 +1,11 @@
+.\build\keil\obj\lv_fs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_fs.c
+.\build\keil\obj\lv_fs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_fs.h
+.\build\keil\obj\lv_fs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\../../lv_conf.h
+.\build\keil\obj\lv_fs.o: .\rtconfig.h
+.\build\keil\obj\lv_fs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\lv_fs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\build\keil\obj\lv_fs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_mem.h
+.\build\keil\obj\lv_fs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\build\keil\obj\lv_fs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_log.h
+.\build\keil\obj\lv_fs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_ll.h
+.\build\keil\obj\lv_fs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

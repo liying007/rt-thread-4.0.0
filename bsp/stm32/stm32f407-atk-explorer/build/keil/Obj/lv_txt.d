@@ -1,0 +1,14 @@
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_txt.c
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_txt.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\../../lv_conf.h
+.\build\keil\obj\lv_txt.o: .\rtconfig.h
+.\build\keil\obj\lv_txt.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_area.h
+.\build\keil\obj\lv_txt.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\build\keil\obj\lv_txt.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_font.h
+.\build\keil\obj\lv_txt.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_symbol_def.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\../lv_fonts/lv_font_builtin.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\../lv_fonts/../lv_misc/lv_font.h
+.\build\keil\obj\lv_txt.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_math.h

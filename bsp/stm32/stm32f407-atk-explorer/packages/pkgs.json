@@ -1,0 +1,32 @@
+[
+ {
+  "path": "/packages/system/fal", 
+  "ver": "latest", 
+  "name": "FAL"
+ }, 
+ {
+  "path": "/packages/system/sqlite", 
+  "ver": "v3.19.3", 
+  "name": "SQLITE"
+ }, 
+ {
+  "path": "/packages/system/LittlevGL2RTT", 
+  "ver": "latest", 
+  "name": "LITTLEVGL2RTT"
+ }, 
+ {
+  "path": "/packages/system/littlefs", 
+  "ver": "latest", 
+  "name": "LITTLEFS"
+ }, 
+ {
+  "path": "/packages/peripherals/mpu6xxx", 
+  "ver": "latest", 
+  "name": "MPU6XXX"
+ }, 
+ {
+  "path": "/packages/misc/samples/filesystem_samples", 
+  "ver": "v0.2.0", 
+  "name": "FILESYSTEM_SAMPLES"
+ }
+]

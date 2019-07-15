@@ -28,7 +28,7 @@ if GetDepend(['RT_USING_QSPI']):
 
 if GetDepend(['RT_USING_USB_DEVICE']):
     src += ['drv_usb.c']
-
+	
 if GetDepend(['RT_USING_I2C', 'RT_USING_I2C_BITOPS']):
     src += ['drv_soft_i2c.c']
 

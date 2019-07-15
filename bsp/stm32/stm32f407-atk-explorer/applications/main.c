@@ -8,7 +8,7 @@
  * 2018-11-06     SummerGift   first version
  * 2018-11-19     flybreak     add stm32f407-atk-explorer bsp
  */
-
+#include <integer.h>
 #include <rtthread.h>
 #include <rtdevice.h>
 #include <board.h>
@@ -24,13 +24,14 @@
 #include "lv_port_disp.h"
 #include "littlevgl2rtt.h"
 #include "lv_conf.h"
-#include <integer.h>
 #include "./key/key.h"
+#include <drivers/usb_host.h>
+#include "ff.h"
+#include "dfs_file.h"
 
 
 /* defined the LED0 pin: PF9 */
 #define LED0_PIN    GET_PIN(F, 9)
-
 
 extern void mkdir_sample(void);
 extern void opendir_sample(void);
@@ -42,6 +43,7 @@ static lv_res_t btn_click_action(lv_obj_t * btn);
 void lv_tutorial_fonts(void);
 //extern int rt_lvgl_demo_init(void);
 //extern rt_err_t stm32_spi_bus_attach_device(rt_uint32_t pin, const char *bus_name, const char *device_name);
+
 
 //uart3 thread
 void test_thread_entry(void* parameter)
@@ -103,9 +105,50 @@ static int mnt_init(void)
 	}
 }
 
-void test_hz()
+void test_hz1()
 {
 	lv_tutorial_fonts();
+}
+
+void test_hz(void)
+{
+    static lv_style_t style1;
+    char *str="hello 你好啊吧";
+ 
+    /*Create a style and use the new font*/
+    lv_style_copy(&style1, &lv_style_pretty);
+    style1.text.font = LV_FONT_DEFAULT; 
+ 
+    /*Create a label and set new text*/
+    lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
+    lv_obj_set_pos(label, 10, 10);
+    lv_label_set_style(label, &style1);
+    lv_label_set_text(label, str);
+}
+
+FRESULT test_readSdFile()
+{
+		int ret;
+		struct dfs_fd fd;
+		FIL file;
+    FRESULT res;
+		uint32_t br;
+		uint8_t letterBuff[32] = {0};
+	
+		//ret = dfs_file_open(&fd, "123.txt", O_RDONLY);
+		
+		res = f_open(&file, (const TCHAR*)"123.txt", FA_CREATE_NEW);
+		
+		//res = f_open(&file, (const TCHAR*)"123.txt", FA_OPEN_EXISTING|FA_READ);
+		
+		if(res != FR_OK) 
+		{ 
+			return NULL;
+		}
+		
+		res = f_write(&file, "123456", 6, &br);
+		//res = f_read(&file, letterBuff, 2, &br);
+		return res;
 }
 
 void test_bar()
@@ -362,31 +405,6 @@ void test_list()
 
 
 
-//key thread
-void key_thread_entry(void* parameter)
-{
-		key_init();
-		while (1)
-    {
-				u8 key = key_scan();
-				switch(key) 
-				{
-					case KEY_LEFT:
-						rt_kprintf("key_scan KEY_LEFT pressed!\n");
-						break;
-					case KEY_RIGHT:
-						rt_kprintf("key_scan KEY_RIGHT pressed!\n");
-						break;
-					case KEY_DOWN:
-						rt_kprintf("key_scan KEY_DOWN pressed!\n");
-						break;
-					case KEY_UP:
-						rt_kprintf("key_scan KEY_UP pressed!\n");
-						break;
-				}
-		}
-}
-
 lv_res_t btn_action(lv_obj_t * btn)
 {
 		rt_kprintf("Clicked\n");
@@ -405,6 +423,32 @@ static lv_res_t btn_click_action(lv_obj_t * btn)
     return LV_RES_OK; /*Return OK if the button is not deleted*/
 }
 
+//key thread
+void key_thread_entry(void* parameter)
+{
+		key_init();
+		while (1)
+    {
+				u8 key = key_scan(0);
+				switch(key) 
+				{
+					case KEY_UP:
+						rt_kprintf("key_scan KEY_UP pressed!\n");
+						break;
+					case KEY_DOWN:
+						rt_kprintf("key_scan KEY_DOWN pressed!\n");
+						break;
+					case KEY_LEFT:
+						//test_hz();
+						rt_kprintf("key_scan KEY_LEFT pressed!\n");
+						break;
+					case KEY_RIGHT:
+						//test_readSdFile();
+						rt_kprintf("key_scan KEY_RIGHT pressed!\n");
+						break;
+				}
+		}
+}
 
 void lv_tutorial_fonts(void)
 {
@@ -423,33 +467,52 @@ void lv_tutorial_fonts(void)
 }
 
 
+
+void convertStrToUnChar(char* str, unsigned char* UnChar)  
+{  
+    int i = strlen(str), j = 0, counter = 0;  
+    char c[2];  
+    unsigned int bytes[2];  
+  
+    for (j = 0; j < i; j += 2)   
+    {  
+        if(0 == j % 2)  
+        {  
+            c[0] = str[j];  
+            c[1] = str[j + 1];  
+            sscanf(c, "%02x" , &bytes[0]);  
+            UnChar[counter] = bytes[0];  
+            counter++;  
+        }  
+    }  
+    return;  
+}  
+
 int main(void)
 {
-    int count = 1;
-		char *pTemp = "spi10";
 		struct rt_device *mtd_dev = RT_NULL;
 	
 		rt_kprintf("\n*****************main*****************\n");
     //led 
     rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
 		rt_pin_write(LED0_PIN, PIN_LOW);
-	
 
+		//rt_usb_host_init();
+	
 		//key thread
 		rt_thread_t tid = RT_NULL;
     tid = rt_thread_create("key",
                     key_thread_entry,
                     RT_NULL,
-                    1024,
+                    2048,
                     2,
                     10);
     if (tid != RT_NULL)
         rt_thread_startup(tid);
 		
-		
 
 		//littlevGL thread
-		rt_thread_t lvThread = RT_NULL; 
+		/*rt_thread_t lvThread = RT_NULL; 
     lvThread = rt_thread_create("lv",
                     lv_port_disp_init,
                     RT_NULL,
@@ -458,8 +521,7 @@ int main(void)
                     10);
     if (lvThread != RT_NULL)
 			rt_thread_startup(lvThread);
-		
-		
+		*/
 
 
 	/*

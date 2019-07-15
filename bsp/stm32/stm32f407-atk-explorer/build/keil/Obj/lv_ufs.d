@@ -1,0 +1,14 @@
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_ufs.c
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_ufs.h
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\../../lv_conf.h
+.\build\keil\obj\lv_ufs.o: .\rtconfig.h
+.\build\keil\obj\lv_ufs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_fs.h
+.\build\keil\obj\lv_ufs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_mem.h
+.\build\keil\obj\lv_ufs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_log.h
+.\build\keil\obj\lv_ufs.o: packages\LittlevGL2RTT-latest\lvgl\lv_misc\lv_ll.h
+.\build\keil\obj\lv_ufs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\build\keil\obj\lv_ufs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\build\keil\obj\lv_ufs.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
