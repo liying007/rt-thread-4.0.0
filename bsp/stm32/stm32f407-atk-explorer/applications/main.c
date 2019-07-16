@@ -149,7 +149,7 @@ FRESULT test_readSdFile()
 		}
 		
 		//res = f_write(fd, pBuf, strlen(pBuf), &br);
-		res = f_read(fd, letterBuff, 4, &br);
+		res = f_read(fd, letterBuff, 2, &br);
 		f_close(fd);
 		
 		return res;
