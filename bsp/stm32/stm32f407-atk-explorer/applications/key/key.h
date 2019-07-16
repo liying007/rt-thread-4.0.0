@@ -35,8 +35,8 @@
 #define KEY_UP_Port (GPIOA) //¶¨Òå¶Ë¿Ú
 
 
-void key_init();
-u8 KEY_Scan();
+void key_init(void);
+u8 KEY_Scan(void);
 //void key_thread_entry(void* parameter);
 
 #endif
