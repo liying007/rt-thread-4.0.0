@@ -14,9 +14,10 @@
 #include <board.h>
 #include <dfs_fs.h>
 #include <spi_flash_sfud.h>
-#include "app_uart.h"
+#include <drivers/usb_host.h>
 #include <fal.h>
 #include <rtdbg.h>
+
 #include "spi_flash_w25qxx.h"
 #include "drv_spi.h"
 #include "./tftlcd/tftlcd.h" 
@@ -25,9 +26,11 @@
 #include "littlevgl2rtt.h"
 #include "lv_conf.h"
 #include "./key/key.h"
-#include <drivers/usb_host.h>
+#include "app_uart.h"
 #include "ff.h"
 #include "dfs_file.h"
+#include "led.h"
+#include "sqlite3.h"
 
 
 /* defined the LED0 pin: PF9 */
@@ -41,6 +44,7 @@ extern int rt_lvgl_demo_init(void);
 lv_res_t btn_action(lv_obj_t * btn);
 static lv_res_t btn_click_action(lv_obj_t * btn);
 void lv_tutorial_fonts(void);
+static int testdb1(void);
 //extern int rt_lvgl_demo_init(void);
 //extern rt_err_t stm32_spi_bus_attach_device(rt_uint32_t pin, const char *bus_name, const char *device_name);
 
@@ -129,25 +133,25 @@ void test_hz(void)
 FRESULT test_readSdFile()
 {
 		int ret;
-		struct dfs_fd fd;
-		FIL file;
+		FIL *fd;
     FRESULT res;
 		uint32_t br;
 		uint8_t letterBuff[32] = {0};
-	
-		//ret = dfs_file_open(&fd, "123.txt", O_RDONLY);
+		uint8_t *pBuf = "123456";
 		
-		res = f_open(&file, (const TCHAR*)"123.txt", FA_CREATE_NEW);
-		
-		//res = f_open(&file, (const TCHAR*)"123.txt", FA_OPEN_EXISTING|FA_READ);
+		fd = (FIL *)rt_malloc(sizeof(FIL));
+
+		res = f_open(fd, "/123.txt",  FA_OPEN_EXISTING | FA_READ);
 		
 		if(res != FR_OK) 
 		{ 
 			return NULL;
 		}
 		
-		res = f_write(&file, "123456", 6, &br);
-		//res = f_read(&file, letterBuff, 2, &br);
+		//res = f_write(fd, pBuf, strlen(pBuf), &br);
+		res = f_read(fd, letterBuff, 4, &br);
+		f_close(fd);
+		
 		return res;
 }
 
@@ -436,6 +440,7 @@ void key_thread_entry(void* parameter)
 						rt_kprintf("key_scan KEY_UP pressed!\n");
 						break;
 					case KEY_DOWN:
+						//testdb1();
 						rt_kprintf("key_scan KEY_DOWN pressed!\n");
 						break;
 					case KEY_LEFT:
@@ -488,14 +493,111 @@ void convertStrToUnChar(char* str, unsigned char* UnChar)
     return;  
 }  
 
+
+/*#define DB_NAME 		"/sdcard/m.db"
+static int create_sqlite_db(void)
+{ 
+	int fd = open(DB_NAME, O_RDONLY);
+	if(fd < 0) 
+	{ 
+		const char *sql = "CREATE TABLE userinfo( \ 
+										id INTEGER PRIMARY KEY AUTOINCREMENT,\ 
+										userid INT NOTNULL, \ 
+										username varchar(32) NOTNULL);";
+		return db_create_database(sql); 
+	} 
+	else 
+	{ 
+		close(fd);
+		rt_kprintf("The database has already existed!\n"); 
+	} 
+	return -1; 
+}*/
+
+#define DB_FILE "/test.db"
+#define JUDGE_ERR(pMsgErr)                          \
+    do{                                             \
+        if (pErrMsg != SQLITE_OK)                   \
+        {                                           \
+            rt_kprintf("%s:%d\tSQL error: %s\n",    \
+                __FUNCTION__, __LINE__, pErrMsg);   \
+            sqlite3_free(pErrMsg);                  \
+        }                                           \
+    } while (0)
+	
+static void _select_show(int row, int column, char** azResult)
+{
+    int i, j;
+
+    rt_kprintf("row:%d column=%d\n", row, column);
+    rt_kprintf("\nThe result of querying is : \n");
+
+    for (i=0; i<row+1; i++)
+    {
+        for (j=0; j<column; j++)
+        {
+            rt_kprintf("%s\t", azResult[(i*column) + j]);
+        }
+
+        rt_kprintf("\n");
+    }
+}
+
+static int testdb1(void)
+{
+    sqlite3* db = NULL;
+    char* sql;
+    char* pErrMsg = 0;
+    char** azResult;
+    int rc;
+    int nrow = 0;
+    int ncolumn = 0;
+
+    rt_kprintf("\n=====case 1:\n");
+
+    rc = sqlite3_open(DB_FILE, &db);
+    if(rc)
+    {
+        rt_kprintf("Can’t open database: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return -1;
+    }
+
+    rt_kprintf("opened a sqlite3 database named %s successfully!\n", DB_FILE);
+
+    sql = "CREATE TABLE test(ID INTEGER PRIMARY KEY,AGE INTEGER,LEVEL INTEGER,"
+            "NAME VARCHAR(12),SALARY REAL);";
+    sqlite3_exec(db, sql, 0, 0, &pErrMsg);
+    JUDGE_ERR(pErrMsg);
+    
+    sql = "INSERT INTO test VALUES(NULL, 1, 1, '201312', 120.9);";
+    sqlite3_exec(db, sql, 0, 0, &pErrMsg);
+    JUDGE_ERR(pErrMsg);
+    
+    sql = "SELECT * FROM test";
+    sqlite3_get_table(db, sql, &azResult, &nrow, &ncolumn, &pErrMsg);
+    JUDGE_ERR(pErrMsg);
+    _select_show(nrow, ncolumn, azResult);
+
+    sql = "DELETE FROM test WHERE AGE = 1;";
+    sqlite3_exec(db, sql, 0, 0, &pErrMsg);
+    JUDGE_ERR(pErrMsg);
+
+    sqlite3_free_table(azResult);
+    sqlite3_close(db);
+
+    return 0;
+}
+
+
 int main(void)
 {
 		struct rt_device *mtd_dev = RT_NULL;
 	
 		rt_kprintf("\n*****************main*****************\n");
     //led 
-    rt_pin_mode(LED0_PIN, PIN_MODE_OUTPUT);
-		rt_pin_write(LED0_PIN, PIN_LOW);
+    Led_SetLight(LED1, true);
+		Led_SetLight(LED2, true);
 
 		//rt_usb_host_init();
 	
@@ -504,12 +606,26 @@ int main(void)
     tid = rt_thread_create("key",
                     key_thread_entry,
                     RT_NULL,
-                    2048,
+                    1024,
                     2,
                     10);
     if (tid != RT_NULL)
         rt_thread_startup(tid);
 		
+		
+		
+		
+		//挂载flash
+		/*rt_sfud_flash_probe("W25Q128", "spi10");
+		w25qxx_init("W25Q128","spi10");
+		mnt_init();
+		*/
+		
+		
+		//spi_w25q_sample(1, &pTemp);
+		
+		//testdb1();
+		//test_readSdFile();
 
 		//littlevGL thread
 		/*rt_thread_t lvThread = RT_NULL; 
@@ -520,29 +636,10 @@ int main(void)
                     3,
                     10);
     if (lvThread != RT_NULL)
-			rt_thread_startup(lvThread);
-		*/
+			rt_thread_startup(lvThread);*/
+		
 
 
-	/*
-		FRONT_COLOR=BLUE;
-		LCD_ShowString(10, 10, tftlcd_data.width, tftlcd_data.height, 12, "12 Hello World!");
-		LCD_ShowString(10, 30, tftlcd_data.width, tftlcd_data.height, 16, "16 Hello World!");
-		LCD_ShowString(10, 50, tftlcd_data.width, tftlcd_data.height, 24, "24 Hello World!");
-		LCD_ShowFontHZ(10, 80, "普中科技");
-		LCD_ShowString(10, 120, tftlcd_data.width, tftlcd_data.height, 24, "24 www.prechin.cn");
-		*/
-		
-		
-		//rt_hw_spi_flash_with_sfud_init();
-		/*rt_sfud_flash_probe("W25Q128", "spi10");
-		w25qxx_init("W25Q128","spi10");
-		
-		mnt_init();
-		
-		spi_w25q_sample(1, &pTemp);
-		*/
-		
 		//rt_lvgl_demo_in  it();
 		
 		//mkdir_sample();
@@ -575,14 +672,5 @@ int main(void)
 				}
 			}
 		}*/
-		
-		/*
-    while (count++)
-    {
-        rt_pin_write(LED0_PIN, PIN_HIGH);
-        rt_thread_mdelay(500);
-        rt_pin_write(LED0_PIN, PIN_LOW);
-        rt_thread_mdelay(500);
-    }*/
 		return RT_EOK;
 }

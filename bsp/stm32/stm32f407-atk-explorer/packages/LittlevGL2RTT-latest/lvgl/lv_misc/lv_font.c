@@ -222,24 +222,30 @@ const uint8_t * ex_lv_font_get_bitmap_sparse(const lv_font_t * font, uint32_t un
     {
         if(font->unicode_list[i] == unicode_letter) 
         {
-            FIL Binfile;
+            FIL *Binfile = NULL;
             FRESULT res;
             uint32_t br,fsize; 
+					
+						Binfile = (FIL *)rt_malloc(sizeof(FIL));
+					
             i = font->glyph_dsc[i].glyph_index;
-            res = f_open(&Binfile, (const TCHAR*)font->glyph_bitmap, FA_OPEN_EXISTING|FA_READ);
+            res = f_open(Binfile, (const TCHAR*)font->glyph_bitmap, FA_OPEN_EXISTING|FA_READ);
             if(res != FR_OK) { return NULL;}
-            fsize = Binfile.obj.objsize;
+						
+            fsize = Binfile->obj.objsize;
             if(i+LetterSIZE <= fsize)
             {
 								uint8_t letterBuff[512] = {0};
-                f_lseek(&Binfile,i);  
-                res = f_read(&Binfile, letterBuff, LetterSIZE, &br);
+                f_lseek(Binfile,i);  
+                res = f_read(Binfile, letterBuff, LetterSIZE, &br);
                 if(res == FR_OK && (br == LetterSIZE || br == LetterSIZE/2) || br == 0)
                 {
                     pval = letterBuff;
                 }
             }
-            f_close(&Binfile);
+            f_close(Binfile);
+						if(Binfile)
+							rt_free(Binfile);
             
             return pval;
         }

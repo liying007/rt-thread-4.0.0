@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, STM32F407xx, LFS_CONFIG=lfs_config.h, RT_USING_ARM_LIBC</Define>
               <Undefine></Undefine>
-              <IncludePath>.;..\..\..\include;applications;.;board;board\CubeMX_Config\Inc;board\ports;..\libraries\HAL_Drivers;..\libraries\HAL_Drivers\config;..\libraries\HAL_Drivers\drv_flash;packages\fal-latest\inc;packages\filesystem_samples-v0.2.0;packages\littlefs-latest;packages\LittlevGL2RTT-latest;packages\LittlevGL2RTT-latest\lvgl;packages\LittlevGL2RTT-latest\lvgl\lv_core;packages\LittlevGL2RTT-latest\lvgl\lv_draw;packages\LittlevGL2RTT-latest\lvgl\lv_hal;packages\LittlevGL2RTT-latest\lvgl\lv_misc;packages\LittlevGL2RTT-latest\lvgl\lv_fonts;packages\LittlevGL2RTT-latest\lvgl\lv_objx;packages\LittlevGL2RTT-latest\lvgl\lv_themes;packages\LittlevGL2RTT-latest\lvgl\lv_porting;packages\mpu6xxx-latest\inc;packages\sqlite-v3.19.3;..\..\..\libcpu\arm\common;..\..\..\libcpu\arm\cortex-m4;..\..\..\components\dfs\include;..\..\..\components\dfs\filesystems\devfs;..\..\..\components\dfs\filesystems\elmfat;..\..\..\components\drivers\audio;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\spi;..\..\..\components\drivers\include;..\..\..\components\drivers\spi\sfud\inc;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\usb\usbdevice;..\..\..\components\drivers\usb\usbhost;..\..\..\components\drivers\usb\usbhost\class;..\..\..\components\drivers\usb\usbhost\core;..\..\..\components\drivers\usb\usbhost\include;..\..\..\components\drivers\include;..\..\..\components\finsh;..\..\..\components\libc\compilers\armlibc;..\..\..\components\libc\compilers\common;..\..\..\components\utilities\logtrace;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;..\libraries\STM32F4xx_HAL\CMSIS\Include;.\applications\key;.\applications\public;.\applications\tftlcd</IncludePath>
+              <IncludePath>.;..\..\..\include;applications;.;board;board\CubeMX_Config\Inc;board\ports;..\libraries\HAL_Drivers;..\libraries\HAL_Drivers\config;..\libraries\HAL_Drivers\drv_flash;packages\cJSON-latest;packages\fal-latest\inc;packages\filesystem_samples-v0.2.0;packages\littlefs-latest;packages\LittlevGL2RTT-latest;packages\LittlevGL2RTT-latest\lvgl;packages\LittlevGL2RTT-latest\lvgl\lv_core;packages\LittlevGL2RTT-latest\lvgl\lv_draw;packages\LittlevGL2RTT-latest\lvgl\lv_hal;packages\LittlevGL2RTT-latest\lvgl\lv_misc;packages\LittlevGL2RTT-latest\lvgl\lv_fonts;packages\LittlevGL2RTT-latest\lvgl\lv_objx;packages\LittlevGL2RTT-latest\lvgl\lv_themes;packages\LittlevGL2RTT-latest\lvgl\lv_porting;packages\mpu6xxx-latest\inc;packages\sqlite-v3.19.3;..\..\..\libcpu\arm\common;..\..\..\libcpu\arm\cortex-m4;..\..\..\components\cplusplus;..\..\..\components\dfs\include;..\..\..\components\dfs\filesystems\devfs;..\..\..\components\dfs\filesystems\elmfat;..\..\..\components\drivers\audio;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\spi;..\..\..\components\drivers\include;..\..\..\components\drivers\spi\sfud\inc;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\usb\usbdevice;..\..\..\components\drivers\usb\usbhost;..\..\..\components\drivers\usb\usbhost\class;..\..\..\components\drivers\usb\usbhost\core;..\..\..\components\drivers\usb\usbhost\include;..\..\..\components\drivers\include;..\..\..\components\finsh;..\..\..\components\libc\compilers\armlibc;..\..\..\components\libc\compilers\common;..\..\..\components\utilities\logtrace;..\libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;..\libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;..\libraries\STM32F4xx_HAL\CMSIS\Include;.\applications\key;.\applications\led;.\applications\public;.\applications\tftlcd</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -509,14 +509,19 @@
               <FilePath>applications\public\stm32f4xx_fsmc.c</FilePath>
             </File>
             <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\public\gpio.c</FilePath>
+            </File>
+            <File>
               <FileName>key.c</FileName>
               <FileType>1</FileType>
               <FilePath>applications\key\key.c</FilePath>
             </File>
             <File>
-              <FileName>gpio.c</FileName>
+              <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\public\gpio.c</FilePath>
+              <FilePath>applications\led\led.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -607,6 +612,26 @@
               <FileName>drv_common.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\libraries\HAL_Drivers\drv_common.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>cJSON</GroupName>
+          <Files>
+            <File>
+              <FileName>cJSON.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\cJSON-latest\cJSON.c</FilePath>
+            </File>
+            <File>
+              <FileName>cJSON_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\cJSON-latest\cJSON_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>cJSON_util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\cJSON-latest\cJSON_util.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1292,6 +1317,36 @@
               <FileName>context_rvds.S</FileName>
               <FileType>2</FileType>
               <FilePath>..\..\..\libcpu\arm\cortex-m4\context_rvds.S</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>CPlusPlus</GroupName>
+          <Files>
+            <File>
+              <FileName>Mutex.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\components\cplusplus\Mutex.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Semaphore.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\components\cplusplus\Semaphore.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Thread.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\components\cplusplus\Thread.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>crt.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\components\cplusplus\crt.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>crt_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\components\cplusplus\crt_init.c</FilePath>
             </File>
           </Files>
         </Group>

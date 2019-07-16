@@ -35,6 +35,8 @@ static void mem_blend(lv_color_t * dest, const lv_color_t * src, uint32_t length
 static void mem_fill(lv_color_t * dest, uint32_t length, lv_color_t color);
 #endif
 
+extern void test_hz(void);
+
 /**********************
  *  STATIC VARIABLES
  **********************/

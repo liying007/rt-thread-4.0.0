@@ -106,7 +106,6 @@
 .\build\keil\obj\main.o: ..\..\..\components\drivers\spi\sfud\inc\sfud_cfg.h
 .\build\keil\obj\main.o: ..\..\..\components\drivers\spi\./sfud/inc/sfud_flash_def.h
 .\build\keil\obj\main.o: ..\..\..\components\drivers\spi\spi_flash.h
-.\build\keil\obj\main.o: applications\app_uart.h
 .\build\keil\obj\main.o: packages\fal-latest\inc\fal.h
 .\build\keil\obj\main.o: board\ports\fal_cfg.h
 .\build\keil\obj\main.o: packages\fal-latest\inc\fal_def.h
@@ -191,6 +190,9 @@
 .\build\keil\obj\main.o: packages\LittlevGL2RTT-latest\lvgl/lv_objx/lv_calendar.h
 .\build\keil\obj\main.o: packages\LittlevGL2RTT-latest\littlevgl2rtt.h
 .\build\keil\obj\main.o: applications\./key/key.h
+.\build\keil\obj\main.o: applications\app_uart.h
 .\build\keil\obj\main.o: ..\..\..\components\dfs\filesystems\elmfat\ff.h
 .\build\keil\obj\main.o: ..\..\..\components\dfs\filesystems\elmfat\ffconf.h
 .\build\keil\obj\main.o: ..\..\..\components\dfs\include\dfs_file.h
+.\build\keil\obj\main.o: .\applications\led\led.h
+.\build\keil\obj\main.o: packages\sqlite-v3.19.3\sqlite3.h

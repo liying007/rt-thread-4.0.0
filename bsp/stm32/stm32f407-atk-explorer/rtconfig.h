@@ -48,10 +48,11 @@
 #define RT_USING_COMPONENTS_INIT
 #define RT_USING_USER_MAIN
 #define RT_MAIN_THREAD_STACK_SIZE 2048
-#define RT_MAIN_THREAD_PRIORITY 20
+#define RT_MAIN_THREAD_PRIORITY 23
 
 /* C++ features */
 
+#define RT_USING_CPLUSPLUS
 
 /* Command shell */
 
@@ -186,6 +187,8 @@
 
 /* IoT - internet of things */
 
+#define PKG_USING_CJSON
+#define PKG_USING_CJSON_LATEST_VERSION
 
 /* Wi-Fi */
 

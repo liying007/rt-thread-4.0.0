@@ -22,20 +22,43 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 E:\ly_work\rt-thread-4.0.0\bsp\stm32\stm32f407-atk-explorer\project.uvprojx
-Project File Date:  07/05/2019
+Project File Date:  07/15/2019
 
 <h2>Output:</h2>
 Build target 'rt-thread'
-compiling key.c...
-applications\key\key.h(38): warning:  #1295-D: Deprecated declaration key_init - give arg types
+compiling main.c...
+packages\LittlevGL2RTT-latest\lvgl\lv_porting\lv_port_disp.h(45): warning:  #1-D: last line of file ends without a newline
+  #endif /*Disable/Enable content*/
+applications\./key/key.h(38): warning:  #1295-D: Deprecated declaration key_init - give arg types
   void key_init();
-applications\key\key.h(39): warning:  #1295-D: Deprecated declaration KEY_Scan - give arg types
+applications\./key/key.h(39): warning:  #1295-D: Deprecated declaration KEY_Scan - give arg types
   u8 KEY_Scan();
-applications\key\key.c: 2 warnings, 0 errors
+.\applications\led\led.h(21): warning:  #1-D: last line of file ends without a newline
+  #endif
+applications\main.c(110): warning:  #940-D: missing return statement at end of non-void function "mnt_init"
+  }
+applications\main.c(148): warning:  #188-D: enumerated type mixed with another type
+                        return NULL;
+applications\main.c(135): warning:  #177-D: variable "ret" was declared but never referenced
+                int ret;
+applications\main.c(140): warning:  #177-D: variable "pBuf" was declared but never referenced
+                uint8_t *pBuf = "123456";
+applications\main.c(436): warning:  #223-D: function "key_scan" declared implicitly
+                                u8 key = key_scan(0);
+applications\main.c(595): warning:  #177-D: variable "mtd_dev" was declared but never referenced
+                struct rt_device *mtd_dev = RT_NULL;
+applications\main.c(546): warning:  #177-D: function "testdb1" was declared but never referenced
+  static int testdb1(void)
+applications\main.c(98): warning:  #177-D: function "mnt_init" was declared but never referenced
+  static int mnt_init(void)
+applications\main.c: 12 warnings, 0 errors
 linking...
-Program Size: Code=179420 RO-data=21972 RW-data=2608 ZI-data=14720  
+.\build\keil\Obj\rt-thread.axf: Warning: L6330W: Undefined symbol SHT$$INIT_ARRAY$$Base (referred from crt_init.o). Unused section has been removed.
+.\build\keil\Obj\rt-thread.axf: Warning: L6330W: Undefined symbol SHT$$INIT_ARRAY$$Limit (referred from crt_init.o). Unused section has been removed.
+Program Size: Code=179628 RO-data=21980 RW-data=2620 ZI-data=14740  
+Finished: 0 information, 2 warning and 0 error messages.
 After Build - User command #1: fromelf --bin .\build\keil\Obj\rt-thread.axf --output rtthread.bin
-".\build\keil\Obj\rt-thread.axf" - 0 Error(s), 2 Warning(s).
+".\build\keil\Obj\rt-thread.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   E:\ly_work\rt-thread-4.0.0\bsp\stm32\stm32f407-atk-explorer\RTE
