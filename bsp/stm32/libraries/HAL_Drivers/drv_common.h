@@ -14,6 +14,7 @@
 #include <rtthread.h>
 #include <rthw.h>
 #include <rtdevice.h>
+#include "stm32l4xx.h"			//lzq add it 2019.7.20	
 
 #ifdef __cplusplus
 extern "C" {
