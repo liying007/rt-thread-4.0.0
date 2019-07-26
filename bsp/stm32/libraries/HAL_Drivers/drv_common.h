@@ -15,6 +15,7 @@
 #include <rthw.h>
 #include <rtdevice.h>
 #include "stm32l4xx.h"			//lzq add it 2019.7.20	
+#include "stm32l4xx_hal_iwdg.h"
 
 #ifdef __cplusplus
 extern "C" {

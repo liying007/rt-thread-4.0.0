@@ -103,6 +103,14 @@ extern "C" {
 #endif
 
 /* DMA2 channel5 */
+/* DMA2 channel2 */
+#if defined(BSP_UART4_RX_USING_DMA) && !defined(UART4_RX_DMA_INSTANCE)
+#define UART4_DMA_RX_IRQHandler         DMA2_Channe5_IRQHandler
+#define UART4_RX_DMA_RCC                RCC_AHB1ENR_DMA2EN
+#define UART4_RX_DMA_INSTANCE           DMA2_Channel5
+#define UART4_RX_DMA_REQUEST            DMA_REQUEST_2
+#define UART4_RX_DMA_IRQ                DMA2_Channel5_IRQn
+#endif
 
 /* DMA2 channel6 */
 #if defined(BSP_UART1_TX_USING_DMA) && !defined(UART1_TX_DMA_INSTANCE)

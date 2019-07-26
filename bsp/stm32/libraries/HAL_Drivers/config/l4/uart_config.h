@@ -63,6 +63,30 @@ extern "C" {
 #endif /* UART2_DMA_CONFIG */
 #endif /* BSP_UART2_RX_USING_DMA */
 
+
+#if defined(BSP_USING_UART4)
+#ifndef UART4_CONFIG
+#define UART4_CONFIG                                                \
+    {                                                               \
+        .name = "uart4",                                            \
+        .Instance = UART4,                                         \
+        .irq_type = UART4_IRQn,                                    \
+    }
+#endif /* UART4_CONFIG */
+#endif /* BSP_USING_UART4 */
+
+#if defined(BSP_UART4_RX_USING_DMA)
+#ifndef UART4_DMA_CONFIG
+#define UART4_DMA_CONFIG                                            \
+    {                                                               \
+        .Instance = UART4_RX_DMA_INSTANCE,                          \
+        .request  = UART4_RX_DMA_REQUEST,                           \
+        .dma_rcc  = UART4_RX_DMA_RCC,                               \
+        .dma_irq  = UART4_RX_DMA_IRQ,                               \
+    }
+#endif /* UART4_DMA_CONFIG */
+#endif /* BSP_UART4_RX_USING_DMA */
+
 #ifdef __cplusplus
 }
 #endif 

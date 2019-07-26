@@ -8,6 +8,16 @@
 *******************************************************************************/
 static KEYPAD keypad[KEYNUMBERS];
 
+//key thread
+void key_thread_entry(void* parameter)
+{
+		while (1)
+    {
+				keyprocess();
+				rt_thread_delay(rt_tick_from_millisecond(10));
+		}
+}
+
 void keypad_init()
 {
 		/* set PowerKey pin mode to inpuput */
@@ -23,9 +33,15 @@ void keypad_init()
 		*/
 		
 	/* start a os thread to poll all keys in fixed time, eg:20ms*/
-	 
-		
-	
+		rt_thread_t keyThread = RT_NULL; 
+    keyThread = rt_thread_create("key",
+                    key_thread_entry,
+                    RT_NULL,
+                    1024,
+                    2,
+                    10);
+    if (keyThread != RT_NULL)
+			rt_thread_startup(keyThread);
 }
 
 
